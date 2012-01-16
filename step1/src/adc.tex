@@ -1,0 +1,46 @@
+\section{Analog to Digital Converter}
+\subsection{Discrete ADC Simulation}
+The initial stage of the voice recording circuit is an analog to digital
+converter allowing the digital storage system to process the analog input from
+an eletret microphone.  A simplified ADC schematic was provided in the lab
+instructions, and was simulated with Cadence PSpice as shown in
+Figure~\ref{f:adc_schem}.
+%
+\begin{figure}[H]
+\centering
+	\includegraphics[width=.8\textwidth]{img/shot/part2_schem.PNG}
+	\parbox{.8\textwidth}{
+	\caption[Discrete ADC --- Schematic]{Schematic for the simplified ADC
+	provided by the lab instructions.}
+	\label{f:adc_schem}}
+\end{figure}
+%
+This circuit was simulated using transient analysis lasting for
+just~\SI{2}{\milli\second}.  Because of the~\SI{1}{\kilo\hertz} frequency of
+the sinusoidal input signal, the system will be observed for two full input
+periods, as shown in Figure~\ref{f:adc_plot}.
+
+\subsection{Discrete ADC Results}
+Upon the completion of the transient simulation, PSpice produced the plot
+included in Figure~\ref{f:adc_plot}.
+%
+\begin{figure}[H]
+\centering
+	\includegraphics[width=.8\textwidth]{img/plot/part2_plot.PNG}
+	\parbox{.8\textwidth}{
+	\caption[Discrete ADC --- Results]{PSpice-produced plot of the input
+	voltage and output voltages, as well as the voltages at the ``Latch'' and
+	``Clk'' nodes as indicated above.}
+	\label{f:adc_plot}}
+\end{figure}
+%
+The plot reveals a lot of information about the function of this particular
+ADC.  The value of the DAC line increases in discrete steps due to the binary
+counter U3.  When the voltage on this line exceeds the input voltage, the latch
+line goes low and triggers the D flip-flop U4 to produce the corresponding
+digital bits D0 through D3.  At this point, the counter resets, latch goes
+high, and the counting process repeats.  While this does provide accurate
+digital representations of individual signals, it causes the rate of
+measurement to increase for inputs with larger voltages as each value in the
+count up process is analyzed for one clock period (in this
+case~\SI{20}{\micro\second}).
