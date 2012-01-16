@@ -1,8 +1,11 @@
 \section{Digital to Analog Converter}
+The final stage in the voice recording circuit is a digital to analog
+converter, so that a standard audio speaker can be used to reproduce the
+captured audio.
 \subsection{Prediction}
 % TODO: Prediction graph
 
-\subsection{Discrete DAC}
+\subsection{Discrete DAC Simulation}
 The provided DAC schematic was captured in Cadence PSpice as shown in
 Figure~\ref{f:dac_schem}.
 %
@@ -75,7 +78,7 @@ output, we can ensure that the full-scale output will fall at~\SI{-15}{\volt}.
 After completing these calculations, an appropriate value of~$R_5$ was
 determined to be~\SI{16}{\volt}.
 
-\subsection{Adjusted Simulation}
+\subsection{Adjusted DAC Simulation}
 The value of~$R_5$ was changed in the schematic and the simulation was run
 again with the same~\SI{32}{\milli\second} duration.  Upon the simulation's
 completion, PSpice produced the plot shown in Figure~\ref{f:dac_plot2}, below.
