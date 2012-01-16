@@ -1,0 +1,50 @@
+\begin{circuitikz}
+	% opamp
+	\draw (0,0) node[op amp] (amp) {};
+
+	% opamp power
+	\draw
+	(amp.up) -- ++(0, .25)
+	++(-.125, 0) -- node[above] {+\SI{15}{\volt}} ++(.25, 0)
+	(amp.down) -- ++(0, -.25)
+	++(-.125, 0) -- node[below] {-\SI{15}{\volt}} ++(.25, 0);
+
+	% feedback resistor
+	\draw
+	(amp.-) -- ++(-.5, 0) |- ++(.5, 1.25) coordinate (r5left)
+	(amp.out) -- ++(.5, 0) |- ++(-.5, \pgfkeysvalueof{/tikz/circuitikz/tripoles/op amp/input height} + 1.25)
+	to [R, l_=$R_5: \SI{20}{\kilo\ohm}$] (r5left);
+
+	% ground
+	\draw
+	(amp.+) -- ++(-.5,0) node[ground] {};
+
+	% output
+	\draw
+	($(amp.out) + (.5, 0)$) to [short, -o] ++(.5, 0) node[above] {$V_\text{out}$};
+
+	% resistor ladder
+	\small
+	\draw[/tikz/circuitikz/bipoles/length=.75cm]
+	($(amp.-) + (-.5, 0)$) -- ++(-.75, 0)
+	++(0, 1.5) coordinate (r1right) -- ++(0, -3)
+
+		% R1
+		(r1right) to [R, l_=$R_1: \SI{80}{\kilo\ohm}$] ++(-2, 0) -- ++(-.5, 0) coordinate (D0) node[above right] {D0}
+
+		% R2
+		($(r1right) + (0, -1)$) to [R, l_=$R_2: \SI{40}{\kilo\ohm}$] ++(-2, 0) -- ++(-.5, 0) coordinate (D1) node[above right] {D1}
+
+		% R3
+		($(r1right) + (0, -2)$) to [R, l_=$R_3: \SI{20}{\kilo\ohm}$] ++(-2, 0) -- ++(-.5, 0) coordinate (D2) node[above right] {D2}
+
+		% R4
+		($(r1right) + (0, -3)$) to [R, l_=$R_4: \SI{10}{\kilo\ohm}$] ++(-2, 0) -- ++(-.5, 0) coordinate (D3) node[above right] {D3};
+
+	% bus line
+	\tiny
+	\draw[ultra thick]
+	(D3) -- (D0) node[above left] {D[3-0]} -- ++(-1, 0)
+	++(0, -.125) rectangle node {DTSM1} ++(-1, .25)
+	++(1, 0) node[below=10pt, align=left, text width = 2.5cm] {0s 0000\\repeat 32 times\\+1ms incr by 00001\\endrepeat};
+\end{circuitikz}
