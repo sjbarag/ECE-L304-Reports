@@ -10,13 +10,16 @@ Figure~\ref{f:dac_schem}.
 \centering
 	\includegraphics[width=.8\textwidth]{img/shot/part1_schem.PNG}
 	\parbox{.8\textwidth}{
-	\caption[Discrete DAC --- Schematic]{Provided schematic for the discrete digital to analog converter (DAC).  Note that the value of~$R_5$ has already been adjusted in this image.}
+	\caption[Discrete DAC --- Schematic]{Provided schematic for the discrete
+	digital to analog converter (DAC).  Note that the value of~$R_5$ has
+	already been adjusted in this image.}
 	\label{f:dac_schem}}
 \end{figure}
 %
 Note that the element titled ``DTSM 1'' was edited to repeatedly count from
 zero~($0000_2$) to fifteen~($1111_2$) with each intermediate value
-lasting for~\SI{1}{\milli\second}.  This was accomplished by editing the element properties and providing the four instructions shown:
+lasting for~\SI{1}{\milli\second}.  This was accomplished by editing the
+element properties and providing the four instructions shown:
 %
 \begin{itemize*}
 	\item \ttt{0s 0000}
@@ -41,13 +44,15 @@ below in Figure~\ref{f:dac_plot1}.
 \end{figure}
 %
 As is shown in the produced plot of output voltage versus time, the output
-reaches the minimum possible output voltage of~\SI{-15}{\volt} at~\SI{12}{\milli\second}.  This is
-caused by an improperly tuned feedback resistor~$R_5$.
+reaches the minimum possible output voltage of~\SI{-15}{\volt}
+at~\SI{12}{\milli\second}.  This is caused by an improperly tuned feedback
+resistor~$R_5$.
 
 \subsection{Feedback Resistor Tuning}
 In order to ensure that the minimum output voltage of~\SI{-15}{\volt}~(limited
 by the op amp's supply voltage) occurs at the maximum input value of~$1111_2$,
-the value of the feedback resistor~$R_5$ must be adjusted.  The output voltage of the discrete DAC is governed by~\eqref{eq:dac}:
+the value of the feedback resistor~$R_5$ must be adjusted.  The output voltage
+of the discrete DAC is governed by~\eqref{eq:dac}:
 %
 \begin{equation}
 	V_\text{out} = - 5 R_5 \left( \frac{D_3}{R_4} + \frac{D_2}{R_3} + \frac{D_1}{R_2} + \frac{D_0}{R_1} \right)
@@ -56,9 +61,10 @@ the value of the feedback resistor~$R_5$ must be adjusted.  The output voltage o
 %
 where~$D_0$ through~$D_3$ are the binary values of the corresponding bits in
 Figure~\ref{f:dac_schem} and~$R_1$ through~$R_5$ are the associated resistors
-in the same schematic.  By designing for a binary value of~0101 to correspond
-with a~\SI{-5}{\volt} output, we can ensure that the full-scale output will
-fall at~\SI{-15}{\volt}.
+in the same schematic.  Note that the negative sign on the right-hand side is a
+result of using the inverting terminal of the opamp for our varying input.  By
+designing for a binary value of~0101 to correspond with a~\SI{-5}{\volt}
+output, we can ensure that the full-scale output will fall at~\SI{-15}{\volt}.
 %
 \begin{align*}
 	V_\text{out} = \SI{-5}{\volt} &= -5 R_5 \left( \frac{0}{\SI{10}{\kilo\ohm}} + \frac{1}{\SI{20}{\kilo\ohm}} + \frac{0}{\SI{40}{\kilo\ohm}} + \frac{1}{\SI{80}{\kilo\ohm}} \right) \\
