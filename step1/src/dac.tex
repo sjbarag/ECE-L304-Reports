@@ -84,9 +84,19 @@ completion, PSpice produced the plot shown in Figure~\ref{f:dac_plot2}, below.
 \centering
 	\includegraphics[width=.8\textwidth]{img/plot/part1_plot2b.PNG}
 	\parbox{.8\textwidth}{
-	\caption[Discrete DAC --- Tuned Results]{Final simulation results with an adjusted feedback resistor.}
+	\caption[Discrete DAC --- Tuned Results]{Final simulation results with an
+	adjusted feedback resistor.}
 	\label{f:dac_plot2}}
 \end{figure}
 
 \subsection{Discrete DAC Results}
-As is shown in the above include PSpice plot, the digital to analog converter produces an accurate representation of the input bits.  By adjusting the
+As is shown in the above included PSpice plot, the digital to analog converter
+produces an accurate representation of the input bits.  By adjusting the value
+of the feedback resistor, students were able to ensure that the full-scale
+input produced an output voltage within the range of values that could be
+accurately represented.  The supply voltages for the operational amplifier
+determined the maximum and minimum possible outputs, thus requiring students to
+force a full-scale input of~$0000_2$ to~\SI{-15}{\volt} or more.  The output
+waveform shows that for each increase in input value there is a corresponding
+decrease in output voltage, a voltage difference that remains constant through
+the entire range of inputs at roughly~\SI{-1}{\volt\per\bit}.
