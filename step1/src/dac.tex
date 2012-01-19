@@ -2,12 +2,24 @@
 The final stage in the voice recording circuit is a digital to analog
 converter, so that a standard audio speaker can be used to reproduce the
 captured audio.
-\subsection{Prediction}
+\subsection{Discrete DAC Prediction}
+Before simulating the properties of a digital to analog converter (DAC),
+students were asked to predict the output of the DAC circuit shown in
+Figure~\ref{f:dac_schem}.  This prediction created the plot in
+Figure~\ref{f:prediction}.
+%
 \begin{figure}[H]
 \centering
 	\input{img/plot/prediction.tex}
+	\parbox{.8\textwidth}{
+	\caption[Discrete DAC --- Prediction]{Student-produced prediction for the discrete DAC circuit.}
+	\label{f:prediction}}
 \end{figure}
-% TODO: Prediction graph
+%
+The student predicted that the output would decrease by one
+discrete~\SI{1}{\volt} step per clock cycle, until the output
+reached~\SI{-15}{\volt}.  Upon the next clock cycle, the output would be zero
+and the decreasing pattern would begin again.
 
 \subsection{Discrete DAC Simulation}
 The provided DAC schematic was captured in Cadence PSpice as shown in
