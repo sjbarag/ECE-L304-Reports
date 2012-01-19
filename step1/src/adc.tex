@@ -30,17 +30,30 @@ included in Figure~\ref{f:adc_plot}.
 	\parbox{.8\textwidth}{
 	\caption[Discrete ADC --- Results]{PSpice-produced plot of the input
 	voltage and output voltages, as well as the voltages at the ``Latch'' and
-	``Clk'' nodes as indicated above.}
+	``Clk'' nodes as indicated above.  \textbf{Note that the schematic
+	numbering in this schematic does not match the numbering from the lab
+	instructions.  All numbering in this document refers to the elements in the
+	included schematics.}}
 	\label{f:adc_plot}}
 \end{figure}
 %
 The plot reveals a lot of information about the function of this particular
 ADC.  The value of the DAC line increases in discrete steps due to the binary
 counter U3.  When the voltage on this line exceeds the input voltage, the latch
-line goes low and triggers the D flip-flop U4 to produce the corresponding
-digital bits D0 through D3.  At this point, the counter resets, latch goes
-high, and the counting process repeats.  While this does provide accurate
-digital representations of individual signals, it causes the rate of
-measurement to increase for inputs with larger voltages as each value in the
-count up process is analyzed for one clock period (in this
-case~\SI{20}{\micro\second}).
+line goes low and triggers the D flip-flop U4 --- here acting as a buffer to
+produce a steady output while the next set of bits is calculated --- to output
+the corresponding digital bits D0 through D3 from its inputs.  At this time the
+counter resets, latch goes high, and the counting process repeats.  While this
+does provide accurate digital representations of individual signals, it causes
+the rate of measurement to increase (and thus the resolution to decrease) for
+inputs with larger voltages, as each value in the count up process is analyzed
+for one clock period (in this case~\SI{20}{\micro\second}).
+
+The block of resistors R1 through R8 acts as an R-2R network.  In this
+configuration, each junction acts as a voltage divider, allowing exactly
+half of the voltage at one node to appear at the next.  Thus each pin from the
+binary counter U3 contributes a portion of voltage consistent with a binary
+value,  i.e. the contribution of DA is twice as large as DB, which is twice as
+large as DC, etc.  Since the sum of these voltages appears at the positive
+input of U6, the opamp acts as a comparator, setting its output high when the
+counter exceeds the system's input.
