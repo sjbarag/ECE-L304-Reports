@@ -55,8 +55,13 @@ to~\eqref{eq:dac}, as shown in~\eqref{eq:dac_ic}.
 \end{equation}
 %
 In the case of a full-scale input to the DAC of~$11111111_2$, the output in
-this configuration would be~$\SI{256}{\volt} \cdot \frac{255}{256} =
-\SI{255}{\volt}$ --- a value that is far too large to be safely used for small
+this configuration would be
+%
+\begin{equation*}
+	\SI{256}{\volt} \cdot \frac{255}{256} = \SI{255}{\volt} \qquad \text{,}
+\end{equation*}
+%
+a value that is far too large to be safely used for small
 scale audio applications.  The reference voltage for the system was tuned
 using~\eqref{eq:dac_ic} so that the full scale output of the DAC would be
 roughly~\SI{10}{\volt}.  This resulted in a calculated reference voltage
