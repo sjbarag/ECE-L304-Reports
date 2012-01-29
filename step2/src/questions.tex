@@ -1,0 +1,9 @@
+\section{Discussion of Results}
+For an input of~$1111_2$, the reconfigured DAC does not reach an output voltage
+of~\SI{-15}{\volt}, but instead reaches only~\SI{-14.974}{\volt}.  This is
+caused by losses within the op amp combined with the fact that the source
+voltages were exactly~$\pm\SI{15}{\volt}$.  If the op amp was ideal in its
+construction and simulation, the full scale output would equal the negative
+supply voltage.  To counteract these losses, the supply voltages could be
+increased marginally, or the output voltage could be measured across a low
+resistance load resistor to ground.
