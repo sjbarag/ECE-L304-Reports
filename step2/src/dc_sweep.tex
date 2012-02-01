@@ -1,0 +1,21 @@
+\section{DC Sweep Results}
+In order to test the ADC, a DC sweep was performed for input voltages from zero
+to~\SI{5}{\volt}.  At each step~(0,~0.3, and~0.6 volts above each integer
+input), the state of the LED output array was recorded.  It is important to
+note that the LEDs are active-low, i.e. each is lit by a logic zero and turned
+off by a logic one.  Table~\ref{t:dc_sweep} shows the \emph{observed logic
+values} at each input voltage.
+%
+\begin{table}[H]
+\centering
+	\input{tbl/sweep_data.tex}
+	\parbox{.6\textwidth}{
+	\caption[DC sweep results]{Table of observed logic values for the DC sweep
+	performed on the ADC's input terminal.}
+	\label{t:dc_sweep}}
+\end{table}
+%
+The above table and the resulting plot in Figure~\ref{f:dc_sweep} shows that
+the output increases approximately linearly for the linear voltage sweep at a
+rate of~\SI{\approx51}{\bit\per\volt}.  This is in line with the expected results,
+thus maintaining that the device is fully-functional.
