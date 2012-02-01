@@ -10,7 +10,7 @@ values} at each input voltage.
 \centering
 	\input{tbl/sweep_data.tex}
 	\parbox{.6\textwidth}{
-	\caption[DC sweep results]{Table of observed logic values for the DC sweep
+	\caption[DC sweep results --- Data]{Table of observed logic values for the DC sweep
 	performed on the ADC's input terminal.}
 	\label{t:dc_sweep}}
 \end{table}
@@ -19,3 +19,14 @@ The above table and the resulting plot in Figure~\ref{f:dc_sweep} shows that
 the output increases approximately linearly for the linear voltage sweep with a
 resolution of~\SI{\approx51}{\bit\per\volt}.  This is in line with the expected
 results, thus maintaining that the device is fully-functional.
+%
+\begin{figure}[H]
+\centering
+	\input{img/plot/dc_sweep.tex}
+	\parbox{4.25in}{
+	\caption[DC sweep results --- Plot]{Plot of the output value (converted to
+	decimal) versus the input voltage for the performed DC sweep.  Note that
+	while the voltage increment is not even, the increase in output is
+	proportional to the change in input.}
+	\label{f:dc_sweep}}
+\end{figure}

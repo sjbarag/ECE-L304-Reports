@@ -9,17 +9,14 @@
 #
 # Author: Sean Barag <sjb89@drexel.edu>
 
-
 set terminal tikz color solid size 4.25in,2.25in
 
+set grid
 unset key
-set xrange [0:30]
-set yrange [0:-16]
-unset yrange
 
-set xlabel 'Time, $t$ (\si{\micro\second})'
-set ylabel 'Output Voltage, $V_\text{out}$ (\si{\volt})'
-set title 'DAC Output Prediction'
+set xlabel 'Input Voltage, $V_\text{in}$ (\si{\volt})'
+set ylabel 'Output Value (Decimal)'
+set title 'DC Voltage Sweep Results'
 
-set output "../img/plot/prediction.tex"
-plot -(int(x) % 15) with steps
+set output "../img/plot/dc_sweep.tex"
+plot "sweep_data.txt" using 1:2 with steps lw 2
