@@ -1,0 +1,19 @@
+\section{Elements}
+
+After consulting the datasheet for the DAC0808 integrated circuit, it was
+determined that three~\SI{5}{\kilo\ohm} resistors were required for the proper
+operation of the chip.  The measured values are shown in
+Table~\ref{t:elements}, along with the elements used in the construction of the
+ADC in step 2.
+%
+\begin{table}[H]
+\centering
+	\input{tbl/elements.tex}
+	\parbox{.8\textwidth}{
+	\caption[List of used elements]{Required, nominal, and measured element
+	values used in the ADC and DAC circuits.}
+	\label{t:elements}}
+\end{table}
+%
+With errors for the DAC resistors all falling under~\SI{1}{\percent}, the
+elements are all appropriately accurate for this application.
