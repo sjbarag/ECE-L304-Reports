@@ -1,16 +1,45 @@
 \section{Part 2}
 
+The second part of step four builds on the skills obtained in part one,
+requiring students to increase the number of memory addresses used and the size
+of each stored value, while still creating an accurate reproduction of the data
+after storage has been completed.
+
 \subsection{Schematic}
+Like with part one, the schematic for this expanded RAM use case was provided
+in the lab instructions.  The schematic as simulated is included here in
+Figure~\ref{f:schem2}.
+%
 \begin{figure}[H]
 \centering
-	\includegraphics[width=.8\textwidth]{img/shot/schem1.png}
+	\includegraphics[width=.8\textwidth]{img/shot/schem2.png}
 	\parbox{.8\textwidth}{
 	\caption[Part 2 Schematic]{PSpice schematic for the circuit simulated in
 	part two of step four.}
 	\label{f:schem2}}
 \end{figure}
+%
+The schematic shown reads~256 values of~8-bit data from the \ttt{W} register
+(the output of an ADC) and stores them in addresses~\ttt{0x00}
+through~\ttt{0xFF} in memory.  These values are subsequently read from those
+locations and written to the \ttt{R} register for conversion to analog and
+final output.
 
 \subsection{Simulation}
+This system has a clock period of~\SI{62.5}{\micro\second}, corresponding to a
+clock frequency of~\SI{16}{\kilo\hertz}.  Since there are~256 addresses being
+utilized~(each for both read and write), the simulation lasted
+for
+%
+\begin{equation*}
+\SI{256}{Addresses} \cdot \SI{2}{Accesses\per Address} \cdot
+	\SI{62.5}{\micro\second\per Access} = \SI{32}{\milli\second} \quad \text{.}
+\end{equation*}
+
+Initially, the ADC and DAC were driven by a~\SI{256}{\volt} source.  The
+resulting output, as calculated by PSpice, is shown in
+Figure~\ref{f:schem2plot1}.
+%
 \begin{figure}[H]
 \centering
 	\includegraphics[width=.8\textwidth]{img/shot/sim2_plot1.png}
@@ -22,7 +51,16 @@
 	Figure~\ref{f:schem2plot1_big}.}
 	\label{f:schem2plot1}}
 \end{figure}
-
+%
+While the output appears to represent the input fairly accurately, the output
+is clamped at roughly~\SI{125}{\volt} while the system is reading data.
+Additionally, there are occasional spikes in output voltage to the
+same~\SI{125}{\volt} level that seem to correspond to addresses with only
+consecutive ones in the most significant bits~(e.g. \ttt{1000 0000}, \ttt{1100
+0000}, \ttt{1110, 000}, \ldots).  This phenomenon was prevented by changing the
+ADC and DAC supplies to just~\SI{10}{\volt}, which produced the plot shown in
+Figure~\ref{f:schem2plot2}.
+%
 \begin{figure}[H]
 \centering
 	\includegraphics[width=.8\textwidth]{img/shot/sim2_plot2.png}
@@ -34,5 +72,5 @@
 	Figure~\ref{f:schem2plot2_big}.}
 	\label{f:schem2plot2}}
 \end{figure}
+%
 
-\subsection{Results}
