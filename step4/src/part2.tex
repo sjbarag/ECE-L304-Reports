@@ -73,4 +73,22 @@ Figure~\ref{f:schem2plot2}.
 	\label{f:schem2plot2}}
 \end{figure}
 %
+After making this modification to the supply voltage, the output still clamps
+to half the supply voltage while reading data.  Since this is
+just~\SI{5}{\volt} now, there is no risk of damaging components.  While spikes
+to half-supply voltage are still present, they are now periodic, and appear to
+occur twice per period of sinusoidal input.  Regardless, the input and output
+waveforms match well within the limitations of the~8 bit ADC and DAC
+resolutions.  As this system is merely an extension of the one in part one, the
+relationships between the \ttt{A}, \ttt{W}, \ttt{R}, and \ttt{RW} registers
+remains the same, and the proper read/write timing rules are still followed.
+
+After careful observation, it can be seen that there is a propagation delay for
+values to pass through the L4S590 counter IC equal to the period of one full
+clock cycle.  This is evident by the time between~$t = 0$ and the first
+non-zero value plotted in Figures~\ref{f:schem2plot2}
+and~\ref{f:schem2plot2_big}.  Similarly, there is a lag between when \ttt{RE}
+goes high and when the first valid data is produced.  This is equal to two full
+clock periods~(\SI{62.5}{\micro\second}); one for the counter to reset, and
+another for the reset to propagate through the device.
 
