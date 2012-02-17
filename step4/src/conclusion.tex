@@ -1,10 +1,9 @@
 \section{Conclusions}
 
-In conclusion, the constructed system sufficiently recreated the input signal.
-With a time for each output voltage of~SI{180}{\micro\second},
-or~\SI{68.22}{cycles} of the ADC clock, the system can accurately reproduce a
-sinusoidal input of frequency less than~\SI{3}{\kilo\hertz}.  For any value
-above this critical frequency, aliasing occurs in the output as shown in
-Figure~\ref{f:3000hz}.  While this is less than the ideal maximum frequency of
-the speaking range~(\SI{10}{\kilo\hertz}), it will be acceptable for the low
-quality of reproduction required for this application.
+In conclusion, students simulated a fully functional RAM system in which data
+was both stored to and retrieved from the~\SI{64}{kb} RAM chip.   Both the
+rudimentary and complex systems exhibited the correct timing behavior, and
+reproduced the input data accurately.  While the output of the 8-bit system in
+part two showed some anomalies, they are acceptable for the purposes of a basic
+voice recorder.  After tuning the complex design so that the anomalies were of
+a safe voltage, both systems are ready to be implemented in hardware.
