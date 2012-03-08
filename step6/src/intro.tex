@@ -1,0 +1,11 @@
+\section{Introduction}
+
+The sixth and final step in the process of building a digital voice recorder
+required students to build a circuit to control the writing to and reading from
+the~\SI{1}{\mega\byte} of onboard RAM.  Students constructed a~\SI{17}{bit}
+address generator using two~74LS590~\SI{8}{\bit} counters for bits zero through
+fifteen and a JK flip-flop for bit sixteen.  A small delay was also introduced
+to the system clock in order to ensure that each address has been completely
+generated before it is used.  Finally, students connected the \ttt{WE} and
+\ttt{OE} (write-enable and output-enable, respectively) pins to the control
+system.
