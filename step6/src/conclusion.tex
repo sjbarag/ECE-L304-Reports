@@ -1,10 +1,15 @@
 \section{Conclusions}
 
-In conclusion, the constructed 555-based system clock performed surprisingly
-well.  With a frequency and duty cycle just~\SI{3.12}{\percent}
-and~\SI{0.11}{\percent} below their corresponding target values, the~LM555
-proved itself as a reliable and extremely predictable IC.  Additionally, the
-accuracy to which the clock signal is produced will likely prove to be very
-influential in the later success of the overall voice recording system, as it
-drives the address generator (thus allowing accurate RAM storage and
-read-back).
+In conclusion, the address generator created in step six worked flawlessly; the
+timing of each bit was correct with respect to the clock produced in step five,
+as well as relative to each other bit.  By using a JK flip-flop clocked by
+the most significant bit produced by the 8-bit counters, a seventeenth bit was
+produced.  While students could have simply added a third counter clocked by
+that same source, this would have produced seven extra useless bits and would
+have added unneeded complexity to the already complex system.
+
+By using two \ttt{AND} gates to delay the clock signal into the JK flip-flop
+controlling the read/write state of the system, students were able to ensure
+that each generated address was stabilized before reading or writing occurred.
+This~\SI{20}{\nano\second} delay prevented data corruption in the RAM, but was
+short enough to not significantly affect the voice recorder's functionality.
